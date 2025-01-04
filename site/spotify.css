@@ -1,0 +1,62 @@
+/* spotify.css */
+/* based on volors used for spotify gui */
+
+:root {
+    --dark-gray: #0F0F0D;
+    --light-gray: #393937;
+    --green: #61E876;
+    --white: #FAFAFA;
+}
+
+@font-face {
+    font-family: 'SpotifyTitle';
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/spotify-font/SpotifyMixUITitle.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: 'SpotifyRegular';
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/spotify-font/SpotifyMixUIRegular.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: 'SpotifyBold';
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/spotify-font/SpotifyMixUIBold.woff2") format('woff2');
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 24px;
+    font-family: 'SpotifyBold', 'Times New Roman', serif;
+}
+
+p {
+    font-size: 14px;
+    font-family: 'SpotifyRegular', 'Times New Roman', serif;
+}
+
+body {
+    background-color: var(--dark-gray);
+    color: var(--white);
+}
+
+button {
+    background-color: var(--light-gray);
+    border: 0px;
+    color: var(--white);
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-family: 'SpotifyBold', 'Times New Roman', serif;
+}
+
+button:hover {
+    background-color: var(--green);
+}

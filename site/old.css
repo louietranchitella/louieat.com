@@ -1,0 +1,12 @@
+/* old.css */
+/* based on the first website made by Tim Berners-Lee at info.cern.ch */
+
+body {
+    background-color: white;
+    color: black;
+    font-family: 'Times New Roman', serif;
+}
+
+button {
+    font-family: 'Times New Roman', serif;
+}

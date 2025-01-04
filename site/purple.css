@@ -1,0 +1,40 @@
+/* purple.css */
+/* based on "shades of purple" vim colorscheme by Rigellute */
+
+:root {
+    --dark-purple: #2D2B55;
+    --light-purple: #A599E9;
+    --bright-purple: #B362FF;
+}
+
+@font-face {
+    font-family: 'Monaco';
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/monaco-font/Monaco.ttf");
+}
+
+body {
+    background-color: var(--dark-purple);
+    color: white;
+    font-size: 12px;
+    font-family: 'Monaco', 'Times New Roman', serif;
+}
+
+button {
+    background-color: var(--light-purple);
+    border: 0px;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: lowercase;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-family: 'Monaco', 'Times New Roman', serif;
+}
+
+button:hover {
+    background-color: var(--bright-purple);
+}

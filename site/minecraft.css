@@ -1,0 +1,45 @@
+/* minecraft.css */
+/* based on minecraft's end credits style */
+
+@font-face {
+    font-family: 'Minecraft';
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/minecraft-font/Minecraft.otf")
+         format("opentype");
+}
+
+body {
+    background-color: #563123;
+    background-image: url("images/Dirt_background_BE1.webp");
+    background-size: cover;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-family: 'Minecraft', 'Times New Roman', serif;
+}
+
+button {
+    height: 25pt;
+    width: 75pt;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+    background: #999 url('https://i.ibb.co/rb2TWXL/bgbtn.png') center / cover;
+    image-rendering: pixelated;
+    border: 2px solid #000;
+    box-shadow: inset -2px -4px #0004, inset 2px 2px #FFF5;
+    color: #FFFFFF;
+    text-shadow: 1.5px 1.5px #202013CC;
+    font-family: 'Minecraft', 'Times New Roman', serif;
+}
+
+button:hover {
+    background: url('https://i.ibb.co/rb2TWXL/bgbtn.png') center / cover, rgba(100, 100, 255, 0.45);
+    background-blend-mode: overlay;
+    color: #FFFFA0;
+}
+
+button:active {
+}
+
