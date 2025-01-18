@@ -11,7 +11,7 @@
     font-family: 'Monaco';
     font-style: normal;
     font-weight: normal;
-    src: url("fonts/monaco-font/Monaco.ttf");
+    src: url("../fonts/monaco-font/Monaco.ttf");
 }
 
 body {

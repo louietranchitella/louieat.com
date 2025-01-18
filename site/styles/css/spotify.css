@@ -12,21 +12,21 @@
     font-family: 'SpotifyTitle';
     font-style: normal;
     font-weight: normal;
-    src: url("fonts/spotify-font/SpotifyMixUITitle.woff2") format('woff2');
+    src: url("../fonts/spotify-font/SpotifyMixUITitle.woff2") format('woff2');
 }
 
 @font-face {
     font-family: 'SpotifyRegular';
     font-style: normal;
     font-weight: normal;
-    src: url("fonts/spotify-font/SpotifyMixUIRegular.woff2") format('woff2');
+    src: url("../fonts/spotify-font/SpotifyMixUIRegular.woff2") format('woff2');
 }
 
 @font-face {
     font-family: 'SpotifyBold';
     font-style: normal;
     font-weight: normal;
-    src: url("fonts/spotify-font/SpotifyMixUIBold.woff2") format('woff2');
+    src: url("../fonts/spotify-font/SpotifyMixUIBold.woff2") format('woff2');
 }
 
 h1, h2, h3, h4, h5, h6 {

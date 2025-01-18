@@ -5,13 +5,13 @@
     font-family: 'Minecraft';
     font-style: normal;
     font-weight: normal;
-    src: url("fonts/minecraft-font/Minecraft.otf")
+    src: url("../fonts/minecraft-font/Minecraft.otf")
          format("opentype");
 }
 
 body {
     background-color: #563123;
-    background-image: url("images/Dirt_background_BE1.webp");
+    background-image: url("../images/Dirt_background_BE1.webp");
     background-size: cover;
     color: #FFFFFF;
     font-size: 14px;
@@ -25,7 +25,7 @@ button {
     overflow: hidden;
     white-space: nowrap;
     user-select: none;
-    background: #999 url("images/bgbtn.png") center / cover;
+    background: #999 url("../images/bgbtn.png") center / cover;
     image-rendering: pixelated;
     border: 2px solid #000;
     box-shadow: inset -2px -4px #0004, inset 2px 2px #FFF5;
@@ -35,7 +35,7 @@ button {
 }
 
 button:hover {
-    background: url("images/bgbtn.png") center / cover, rgba(100, 100, 255, 0.45);
+    background: url("../images/bgbtn.png") center / cover, rgba(100, 100, 255, 0.45);
     background-blend-mode: overlay;
     color: #FFFFA0;
 }
