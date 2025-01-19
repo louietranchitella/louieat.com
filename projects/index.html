@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--- Add the style sheet. -->
+    <link id="theme" rel="stylesheet" type="text/css" href="purple.css" />
+
+    <script>
+        function toggleTheme(value) {
+            
+            // Obtain the name of stylesheet
+            // as a parameter and set it
+            // using href attribute.
+            let sheets = document.getElementsByTagName('link');
+
+            sheets[0].href = value;
+        }
+    </script>
+</head>
+
+<body>
+    <h2>projects placeholder</h2>
+    
+    <p>Switch between multiple themes using the buttons below.</p>
+
+    <button onclick="toggleTheme('styles/css/purple.css')">
+        Purple
+    </button>
+
+    <button onclick="toggleTheme('styles/css/spotify.css')">
+        Spotify
+    </button>
+
+    <button onclick="toggleTheme('styles/css/minecraft.css')">
+        Minecraft
+    </button>
+
+    <button onclick="toggleTheme('styles/css/old.css')">
+        Old
+    </button>
+
+</body>
+
+</html>
