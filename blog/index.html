@@ -3,17 +3,32 @@
 
 <head>
     <!--- Add the style sheet. -->
-    <link id="theme" rel="stylesheet" type="text/css" href="../styles/css/purple.css" />
+    <link id="theme" rel="stylesheet" type="text/css" href="purple.css" />
 
     <script>
-        function toggleTheme(value) {
+        var pathToThemes = '../styles/css/';
+
+        if(typeof(Storage) !== 'undefined'){
+            if(localStorage.theme === null){
+                localStorage.theme='purple.css';
+            }
+            console.log(pathToThemes.concat(localStorage.theme));
+            document.getElementById('theme').href = pathToThemes.concat(localStorage.theme);
+        }
+        else{
+            console.warn('Sorry, your browser does not support web storage :(');
+        }
+
+        function toggleTheme(theme) {
             
             // Obtain the name of stylesheet
             // as a parameter and set it
             // using href attribute.
             let sheets = document.getElementsByTagName('link');
 
+            value = pathToThemes.concat(theme);
             sheets[0].href = value;
+            localStorage.theme=theme;
         }
     </script>
 </head>
@@ -23,19 +38,19 @@
     
     <p>Switch between multiple themes using the buttons below.</p>
 
-    <button onclick="toggleTheme('../styles/css/purple.css')">
+    <button onclick="toggleTheme('purple.css')">
         Purple
     </button>
 
-    <button onclick="toggleTheme('../styles/css/spotify.css')">
+    <button onclick="toggleTheme('spotify.css')">
         Spotify
     </button>
 
-    <button onclick="toggleTheme('../styles/css/minecraft.css')">
+    <button onclick="toggleTheme('minecraft.css')">
         Minecraft
     </button>
 
-    <button onclick="toggleTheme('../styles/css/old.css')">
+    <button onclick="toggleTheme('old.css')">
         Old
     </button>
 
