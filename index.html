@@ -3,7 +3,7 @@
 
 <head>
     <!--- Add the style sheet. -->
-    <link id="theme" rel="stylesheet" type="text/css" href="purple.css" />
+    <link id="theme" rel="stylesheet" type="text/css" />
 
     <script>
         var pathToThemes = 'styles/css/';
@@ -12,7 +12,6 @@
             if(localStorage.theme === null){
                 localStorage.theme='purple.css';
             }
-            console.log(pathToThemes.concat(localStorage.theme));
             document.getElementById('theme').href = pathToThemes.concat(localStorage.theme);
         }
         else{
