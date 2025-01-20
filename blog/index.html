@@ -53,6 +53,22 @@
         Old
     </button>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var pathToThemes = '../styles/css/';
+            var theme = localStorage.theme || 'purple.css';
+            document.getElementById('theme').href = pathToThemes.concat(theme);
+        });
+        // Preload all themes
+        var themes = ['purple.css', 'spotify.css', 'minecraft.css', 'old.css'];
+        themes.forEach(function(theme) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', pathToThemes.concat(theme), true);
+            xhr.send();
+        });
+    </script>
+    
+
 </body>
 
 </html>
