@@ -1,0 +1,93 @@
+main page
+blog
+fantasy
+keyboards
+projects(main)
+projects(individual)
+whl
+
+
+
+
+
+Title info
+title object (info)
+
+
+main info
+main object (info)
+
+
+pages info
+    pages object (info)
+
+Spotify Page Size
+
+450 min width
+
+450 - 767: smaller font
+    heading: 20 to 24
+    title: 16 (doesnt change)
+    description: 13 to 14
+
+768 - 973: header style
+    home and search bar, left justified
+
+974 - 1120: header style
+    home and search bar, centered
+    library block width: 280
+
+1120 - 1488
+    library block width: 420
+        gradually expanded with window size
+            i think best to make this 1 to 1 with px, so make it from 1120 to 1540
+
+450 - 1469
+    album content size: 153.77 x 153.77
+
+
+1480 - max
+    album content size: 171.5 x 171.5
+
+
+Spotify Header:
+    max x 64 header
+    3 groups:
+        left:
+            logo home
+            home (when small enough)
+            search (when small enough)
+        center:
+            home (when big enough)
+            search (when big enough)
+        right:
+            bell
+            account
+
+    Logo button:
+        32 x 32 img
+        32 x 32 button
+        left justified, vertical centered
+
+    Home button:
+        49.3656 x 49.3656 img
+        49.3656 x 49.3656 button
+        left justified, vertical centered then center justified, vertical centered
+
+    Search:
+        406.5 x 48
+        475 x 48
+        left justified, vertical centered then center justified, vertical centered
+        leave as small to start, maybe add larger size later
+
+    Bell button:
+        16.2413 x 16.6573 img
+        33.28 x 33.28 button
+        right justified, vertical centered
+
+    Account button:
+        33.28 x 33.28 profile picture
+        49.3655 x 49.3655 img
+        49.3655 x 49.3655 button
+    
+8 px borders
