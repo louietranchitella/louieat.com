@@ -13,99 +13,30 @@ draftyears = ["2000", "2001", "2002", "2003", "2004",
               "2024 US", "2024", "2025 US", "2025",
               "2026"]
 
-territories = {
-    "Alta.": "Alberta",
-    "Alta" : "Alberta",
-    "Atla.": "Alberta",
-    "AB": "Alberta",
-    "B.C.": "British Columbia",
-    "B.C": "British Columbia",
-    "BC.": "British Columbia",
-    "BC": "British Columbia",
-    "Man.": "Manitoba",
-    "MB": "Manitoba",
-    "N.B.": "New Brunswick",
-    "NB": "New Brunswick",
-    "N.W.T": "Northwest Territories",
-    "NWT.": "Northwest Territories",
-    "NT": "Northwest Territories",
-    "Ont.": "Ontario",
-    "ON": "Ontario",
-    "Que.": "Quebec",
-    "QC": "Quebec",
-    "Sakatchewan": "Saskatchewan",
-    "Sask.": "Saskatchewan",
-    "Sack.": "Saskatchewan",
-    "Sak.": "Saskatchewan",
-    "SK": "Saskatchewan",
-    "Yukon": "Yukon",
-    "YT": "Yukon",
-    "AL": "Alabama",
-    "AK": "Alaska",
-    "AZ": "Arizona",
-    "AR": "Arkansas",
-    "CA": "California",
-    "CO": "Colorado",
-    "CT": "Connecticut",
-    "DE": "Delaware",
-    "FL": "Florida",
-    "GA": "Georgia",
-    "HI": "Hawaii",
-    "ID": "Idaho",
-    "IL": "Illinois",
-    "IN": "Indiana",
-    "IA": "Iowa",
-    "KS": "Kansas",
-    "KY": "Kentucky",
-    "LA": "Louisiana",
-    "ME": "Maine",
-    "MD": "Maryland",
-    "MA": "Massachusetts",
-    "MI": "Michigan",
-    "MN": "Minnesota",
-    "MS": "Mississippi",
-    "MO": "Missouri",
-    "MT": "Montana",
-    "NE": "Nebraska",
-    "NV": "Nevada",
-    "NH": "New Hampshire",
-    "NJ": "New Jersey",
-    "NM": "New Mexico",
-    "NY": "New York",
-    "NC": "North Carolina",
-    "ND": "North Dakota",
-    "OH": "Ohio",
-    "OK": "Oklahoma",
-    "OR": "Oregon",
-    "PA": "Pennsylvania",
-    "RI": "Rhode Island",
-    "SC": "South Carolina",
-    "SD": "South Dakota",
-    "TN": "Tennessee",
-    "TX": "Texas",
-    "UT": "Utah",
-    "VT": "Vermont",
-    "VA": "Virginia",
-    "WA": "Washington",
-    "WV": "West Virginia",
-    "WI": "Wisconsin",
-    "WY": "Wyoming",
-    "Rus": "Russia",
-    "Sui": "Switzerland"
-}
-
 int_match = r"^\d+"
 
 drafts = {}
+territories = {}
+firstnames = {}
+lastnames = {}
 
-def download(years):
+def init():
+    with open("territories.json") as json_data:
+        globals()["territories"] = json.load(json_data)
+    with open("firstnames.json") as json_data:
+        globals()["firstnames"] = json.load(json_data)
+    with open("lastnames.json") as json_data:
+        globals()["lastnames"] = json.load(json_data)
+
+def download(years=draftyears):
     for year in years:
-        if "US" in year:
-            year = year.replace(" US", "")
-            cmd = ["./grabber.sh", year, "US"]
-        else:
-            cmd = ["./grabber.sh", year]
+        cmd = year.split(" ")
+        cmd.insert(0, "./grabber.sh")
         subprocess.run(cmd)
+
+    subprocess.run(['curl -o firstnames.json -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" -L "https://howmanyofmes.com/data/first-names.json"'])
+    subprocess.run(['curl -o lastnames.json -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" -L "https://howmanyofmes.com/data/last-names.json"'])
+
 
 def uniqueness(name, first_or_last):
     print(name, end=" ", flush=True)
@@ -116,6 +47,18 @@ def uniqueness(name, first_or_last):
         return re.match(int_match, result.stdout.strip()).group()
     except (AttributeError):
         return -1
+
+def firstname_uniqueness(name):
+    try:
+        return firstnames[name.lower()]["t"]
+    except KeyError:
+        return uniqueness(name, "first")
+
+def lastname_uniqueness(name):
+    try:
+        return lastnames[name.lower()]
+    except KeyError:
+        return uniqueness(name, "last")
 
 def interpret(json_file):
     with open(json_file) as json_data:
@@ -157,24 +100,26 @@ def interpret(json_file):
                 player["home town"] = pick["Player"]["HomeTown"].rsplit(" ")[0]
                 player["home territory"] = territories[pick["Player"]["HomeTown"].rsplit(" ")[-1].strip()]
         player["nationality"] = pick["Player"]["Nationality"]
-        player["first name uniqueness rank"] = int(uniqueness(player["first name"], "first"))
-        player["last name uniqueness rank"] = int(uniqueness(player["last name"], "last"))
+        player["first name uniqueness rank"] = int(firstname_uniqueness(player["first name"]))
+        player["last name uniqueness rank"] = int(lastname_uniqueness(player["last name"]))
         player["combined uniquness rank"] = player["first name uniqueness rank"] + player["last name uniqueness rank"]
         
         drafts[draft][player["pick"]] = player
 
 def output():
-    with open("output.json", "w") as json_file:
-        json.dump(drafts, json_file, indent=4)
+    with open("output.json", "w") as json_data:
+        json.dump(drafts, json_data, indent=4)
 
 def main():
-    #download(draftyears)
+
+    init()
+#    print(firstnames)
+#    download()
     for year in draftyears:
         print(f"\n\n{year}")
         filename = f"drafts/{year.replace(' ','')}.json"
         interpret(filename)
     output()
-    #uniqueness("Coburn", "last")
 
 if __name__ == "__main__":
     main()
