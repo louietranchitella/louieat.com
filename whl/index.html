@@ -2,33 +2,16 @@
 <html>
 
 <head>
-    <!--- Add the style sheet. -->
-    <link id="theme" rel="stylesheet" type="text/css" />
-
     <script>
-        var pathToThemes = '../styles/css/';
-
-        if(typeof(Storage) !== 'undefined'){
-            if(localStorage.theme === null){
-                localStorage.theme='purple.css';
-            }
-            document.getElementById('theme').href = pathToThemes.concat(localStorage.theme);
+        const root = 'louieat.com';
+        const p = window.location.pathname.split('/').filter(Boolean);
+        if (p.length && p[p.length - 1].includes('.')) {
+            p.pop();
         }
-        else{
-            console.warn('Sorry, your browser does not support web storage :(');
-        }
-
-        function toggleTheme(theme) {
-            
-            // Obtain the name of stylesheet
-            // as a parameter and set it
-            // using href attribute.
-            let sheets = document.getElementsByTagName('link');
-
-            value = pathToThemes.concat(theme);
-            sheets[0].href = value;
-            localStorage.theme=theme;
-        }
+        const i = p.indexOf(root);
+        const depth = i !== -1 ? p.length - 1 - i : p.length;
+        const prefix = depth > 0 ? '../'.repeat(depth) : '';
+        document.write('<script src="' + prefix + 'js/theme-loader.js"><\/script>');
     </script>
 </head>
 

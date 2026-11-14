@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        const root = 'louieat.com';
+        const p = window.location.pathname.split('/').filter(Boolean);
+        if (p.length && p[p.length - 1].includes('.')) {
+            p.pop();
+        }
+        const i = p.indexOf(root);
+        const depth = i !== -1 ? p.length - 1 - i : p.length;
+        const prefix = depth > 0 ? '../'.repeat(depth) : '';
+        document.write('<script src="' + prefix + 'js/theme-loader.js"><\/script>');
+    </script>
+</head>
+
+
+<body>
+    <h2>Rotary Phone Jukebox</h2>
+    
+    <p>Switch between multiple themes using the buttons below.</p>
+
+    <button onclick="toggleTheme('purple.css')">
+        Purple
+    </button>
+
+    <button onclick="toggleTheme('spotify.css')">
+        Spotify
+    </button>
+
+    <button onclick="toggleTheme('minecraft.css')">
+        Minecraft
+    </button>
+
+    <button onclick="toggleTheme('old.css')">
+        Old
+    </button>
+
+</body>
+
+</html>
